@@ -2,9 +2,9 @@ const models = require('../database/models');
 
 const registerIne = async (req, res) => {
   try {
-    const user = await models.User.create(req.body);
+    const ine = await models.Ine.create(req.body);
     return res.status(201).json({
-      user,
+      ine,
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -14,11 +14,11 @@ const registerIne = async (req, res) => {
 const getAllInes = async (req, res) => {
     console.log('getAllInes');
   try {
-    const users = await models.User.findAll({
+    const ines = await models.Ine.findAll({
       include: [
        ]
     });
-    return res.status(200).json({ users });
+    return res.status(200).json({ ines });
     } catch (error) {
     return res.status(500).send(error.message);
     }
